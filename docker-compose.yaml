@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  gitea-runner:
+    image: gitea/act_runner:latest
+    restart: always
+    environment:
+      # CRITICAL: How the runner finds your Gitea instance.
+      # If Gitea is at localhost:3000 on your Mac/PC, use host.docker.internal so the container can reach it.
+      GITEA_INSTANCE_URL: "https://gitea.com" 
+      GITEA_RUNNER_REGISTRATION_TOKEN: "xrpFqE2WrRARyRZtQNToMn8FrMn6a7iyRI7f9Q8D"
+      GITEA_RUNNER_NAME: "gitea-runner"
+      # This matches the 'runs-on: ubuntu-latest' in your workflow files
+      GITEA_RUNNER_LABELS: "ubuntu-latest:docker://gitea/runner-images:ubuntu-latest" 
+    volumes:
+      # CRITICAL: This allows the runner to build Docker images using your host's Docker Desktop cache!
+      - /var/run/docker.sock:/var/run/docker.sock 
+      - ./data:/data

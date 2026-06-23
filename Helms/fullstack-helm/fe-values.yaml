@@ -1,0 +1,21 @@
+# helm-charts/frontend/values.yaml
+
+appName: todo-frontend
+environment: local
+replicaCount: 1
+
+image:
+  repository: wathooth/todo-frontend
+  tag: "3c13576c67d69042e5f36fc84e8f3d691f06c931"
+  # CRITICAL: Forces K8s to use the local Docker Desktop cache
+  imagepullPolicy: Always 
+
+service:
+  type: LoadBalancer
+  port: 3000           # The port you type in your browser (keep this)
+  targetPort: 3000   # MUST match Dockerfile EXPOSE
+
+resources:
+  limits:
+    memory: "128Mi"
+    cpu: "100m"

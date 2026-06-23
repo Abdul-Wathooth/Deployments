@@ -1,13 +1,231 @@
-/* * {
-    border: 1px solid black !important;
-} */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a0a2e 100%);
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #ffffff;
+}
 
 .App {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-    background-color: #2196f3;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.Header {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #c084fc;
+  text-shadow: 0 0 10px #a855f7, 0 0 20px #a855f7, 0 0 30px #a855f7;
+  margin-bottom: 40px;
+  letter-spacing: 2px;
+}
+
+.AddBar {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.AddBar-Text {
+  flex: 1;
+  padding: 15px 20px;
+  background: rgba(26, 10, 46, 0.8);
+  border: 2px solid #7c3aed;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(124, 58, 237, 0.3);
+}
+
+.AddBar-Text::placeholder {
+  color: #9ca3af;
+}
+
+.AddBar-Text:focus {
+  border-color: #a855f7;
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+}
+
+.AddBar-Button {
+  padding: 15px 30px;
+  background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 20px rgba(124, 58, 237, 0.5);
+}
+
+.AddBar-Button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.7);
+}
+
+.TodoList {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.Section-Title {
+  font-size: 1.5rem;
+  color: #c084fc;
+  text-shadow: 0 0 10px #a855f7;
+  border-bottom: 2px solid #7c3aed;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.List {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.ListItem {
+  background: rgba(26, 10, 46, 0.9);
+  border: 2px solid #581c87;
+  border-radius: 15px;
+  padding: 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(88, 28, 135, 0.3);
+}
+
+.ListItem:hover {
+  border-color: #a855f7;
+  box-shadow: 0 0 25px rgba(168, 85, 247, 0.4);
+}
+
+.ListItem.done {
+  opacity: 0.7;
+  border-color: #059669;
+  box-shadow: 0 0 15px rgba(5, 150, 105, 0.3);
+}
+
+.ListItem-Header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.Checkbox {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #7c3aed;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.Checkbox:hover {
+  box-shadow: 0 0 10px #a855f7;
+}
+
+.Checkbox.checked {
+  background: #059669;
+  border-color: #059669;
+}
+
+.Title {
+  flex: 1;
+  font-size: 1.1rem;
+  word-break: break-word;
+}
+
+.Title.done {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+.Actions {
+  display: flex;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.Action-Button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.Edit-Button {
+  color: #fbbf24;
+}
+
+.Edit-Button:hover {
+  background: rgba(251, 191, 36, 0.2);
+}
+
+.Delete-Button {
+  color: #ef4444;
+}
+
+.Delete-Button:hover {
+  background: rgba(239, 68, 68, 0.2);
+}
+
+.Meta {
+  display: flex;
+  gap: 20px;
+  font-size: 0.85rem;
+  color: #9ca3af;
+  padding-left: 39px;
+}
+
+.Edit-Input {
+  flex: 1;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 2px solid #7c3aed;
+  border-radius: 8px;
+  color: #ffffff;
+  font-size: 1rem;
+  outline: none;
+}
+
+.Edit-Input:focus {
+  border-color: #a855f7;
+}
+
+.Save-Button {
+  background: #10b981;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.Save-Button:hover {
+  background: #059669;
+}
+
+.Empty-State {
+  text-align: center;
+  padding: 40px;
+  color: #6b7280;
+  font-size: 1.1rem;
 }

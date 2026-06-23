@@ -1,0 +1,31 @@
+appName: todo-backend
+environment: local
+replicaCount: 1
+
+image:
+  repository: wathooth/todo-backend
+  tag: "560a2591a0bc9ab447f9d00515e436ffe25af70d"
+  imagepullPolicy: Always
+
+service:
+  type: LoadBalancer 
+  port: 8080         # The port internal services use
+  targetPort: 8081
+
+# Environment variables injected into the Go container
+env:
+  GIN_MODE: "debug"
+  # CRITICAL FIX: This points the K8s pod out to your host machine's database
+  DB_HOST: "host.docker.internal" 
+  DB_PORT: "5432"
+  # I mapped these based on your prompt. Adjust if "postgress" was the user vs db name!
+  DB_USER: "datasirpi" 
+  DB_NAME: "postgres" 
+
+# ==========================================
+# Database Configuration (Postgres)
+# ==========================================
+database:
+  # Turn this to FALSE. Kubernetes will not deploy a database, 
+  # ensuring your backend connects to your existing DBeaver one!
+  enabled: false
